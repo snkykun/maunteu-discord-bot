@@ -1,3 +1,4 @@
-#rename to botkey.py and set your key in the quotes
+#rename to botkeys.py and set your keys in the quotes
 
-key = ''
+discord_key = ''
+yt_api_key = ''
