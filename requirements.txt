@@ -1,8 +1,6 @@
 discord
-sys
+discord.py
 emoji
-asyncio
-datetime
 google_auth_oauthlib
 googleapiclient
 google-api-python-client
