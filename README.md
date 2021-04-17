@@ -2,7 +2,7 @@
 
 A small discord bot that returns video game edits at random
 
-![Image](/images/screenshot.jpg)
+![Image](/images/demo.gif)
 #### [_click to add the bot to your discord_](https://discord.com/api/oauth2/authorize?client_id=833057810849202218&permissions=2147867712&scope=bot)
 
 ### Commands (prefix is $)
