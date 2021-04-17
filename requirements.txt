@@ -1,0 +1,11 @@
+asyncio
+discord
+discord.py
+emoji
+datetime
+os
+sys
+random
+google-api-python-client
+google_auth_oauthlib
+googleapiclient
