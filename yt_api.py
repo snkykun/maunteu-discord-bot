@@ -8,10 +8,32 @@ from googleapiclient.discovery import build
 
 youtube = build('youtube', 'v3', developerKey=botkeys.yt_api_key)
 
-vid_ids = []
-def playlistUpdate():
-    if len(vid_ids) > 0:
-        list.clear(vid_ids)
+clips_vid_ids = []
+edit_vid_ids = []
+def clipsplaylistUpdate():
+    if len(clips_vid_ids) > 0:
+        list.clear(clips_vid_ids)
+    nextPageToken = None
+    while True:
+        request = youtube.playlistItems().list(
+                part='contentDetails',
+                playlistId='PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z',
+                maxResults=50,
+                pageToken=nextPageToken
+
+            )
+        response = request.execute()
+
+        for items in response['items']:
+            clips_vid_ids.append(items['contentDetails']['videoId'])
+
+        nextPageToken = response.get('nextPageToken')
+
+        if not nextPageToken:
+            break
+def editplaylistUpdate():
+    if len(edit_vid_ids) > 0:
+        list.clear(edit_vid_ids)
     nextPageToken = None
     while True:
         request = youtube.playlistItems().list(
@@ -24,7 +46,7 @@ def playlistUpdate():
         response = request.execute()
 
         for items in response['items']:
-            vid_ids.append(items['contentDetails']['videoId'])
+            edit_vid_ids.append(items['contentDetails']['videoId'])
 
         nextPageToken = response.get('nextPageToken')
 

@@ -16,8 +16,9 @@ client = commands.Bot(command_prefix = '$')
 os.chdir(os.path.dirname(sys.argv[0]))
 @client.event
 async def on_ready():
-    yt_api.playlistUpdate()
-    print('Bot is ready with ' + str(len(yt_api.vid_ids)) + ' videos cached.')
+    yt_api.editplaylistUpdate()
+    yt_api.clipsplaylistUpdate()
+    print('Bot is ready with ' + str(len(yt_api.edit_vid_ids)) + ' edit museum videos and ' + str(len(yt_api.clips_vid_ids)) + ' clips in desc videos discovered.')
     custom = discord.Game('Editing Archive')
     await client.change_presence(status=discord.Status.online, activity=custom)
 ## commands
@@ -26,7 +27,14 @@ async def edit(ctx, *, source=None):
     if source == 'source':
         await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5')
     else:
-        vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.vid_ids))
+        vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.edit_vid_ids))
+        await ctx.send(vid_link)
+@client.command()
+async def clips(ctx, *, source=None):
+    if source == 'source':
+        await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z')
+    else:
+        vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.clips_vid_ids))
         await ctx.send(vid_link)
 
 client.run(botkeys.discord_key)
