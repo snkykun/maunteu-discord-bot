@@ -18,6 +18,10 @@ A small discord bot that returns video game edits at random
 
 clone the repository with `git clone `
 
+place your API keys into `botkeys_EXAMPLE.py` and rename to `botkeys.py`
+> Information on how to get your Youtube API key [here](https://www.youtube.com/watch?v=th5_9woFJmk)
+
+
 `cd maunteu-discord-bot`
 
 `pip install -r requirements.txt`
