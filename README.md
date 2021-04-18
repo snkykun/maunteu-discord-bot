@@ -10,6 +10,10 @@ A small discord bot that returns video game edits at random
 
 `$clips` Sends a random video with "clips in desc"
 
+`$refresh` refreshes video id lists in the event the playlist is updated
+
+`$servers` lists how many servers maunteu is in
+
 ### Playlist Sources:
 - [Edit museum](https://www.youtube.com/playlist?list=PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5)
 - [Clips in desc](https://www.youtube.com/playlist?list=PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z)
