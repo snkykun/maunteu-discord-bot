@@ -10,48 +10,74 @@ youtube = build('youtube', 'v3', developerKey=botkeys.yt_api_key)
 
 clips_vid_ids = []
 edit_vid_ids = []
-def clipsplaylistUpdate():
-    if len(clips_vid_ids) > 0:
+def playlistUpdate():
+    if len(clips_vid_ids) > 0 and len(edit_vid_ids) > 0:
         list.clear(clips_vid_ids)
-    nextPageToken = None
+        list.clear(edit_vid_ids)
+    clips_nextPageToken = None
+    edit_nextPageToken = None
+
     while True:
-        request = youtube.playlistItems().list(
+
+        # clips playlist
+        clips_request = youtube.playlistItems().list(
                 part='contentDetails',
                 playlistId='PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z',
                 maxResults=50,
-                pageToken=nextPageToken
+                pageToken=clips_nextPageToken
 
             )
-        response = request.execute()
+        clips_response = clips_request.execute()
 
-        for items in response['items']:
+        for items in clips_response['items']:
             clips_vid_ids.append(items['contentDetails']['videoId'])
 
-        nextPageToken = response.get('nextPageToken')
+        clips_nextPageToken = clips_response.get('nextPageToken')
 
-        if not nextPageToken:
+        if not clips_nextPageToken:
             break
-def editplaylistUpdate():
-    if len(edit_vid_ids) > 0:
-        list.clear(edit_vid_ids)
-    nextPageToken = None
+
     while True:
-        request = youtube.playlistItems().list(
+
+        # edit playlist
+        edit_request = youtube.playlistItems().list(
                 part='contentDetails',
                 playlistId='PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5',
                 maxResults=50,
-                pageToken=nextPageToken
+                pageToken=edit_nextPageToken
 
             )
-        response = request.execute()
+        edit_response = edit_request.execute()
 
-        for items in response['items']:
+        for items in edit_response['items']:
             edit_vid_ids.append(items['contentDetails']['videoId'])
 
-        nextPageToken = response.get('nextPageToken')
+        edit_nextPageToken = edit_response.get('nextPageToken')
 
-        if not nextPageToken:
+        if not edit_nextPageToken:
             break
+# def editplaylistUpdate():
+#     if len(edit_vid_ids) > 0:
+#         list.clear(edit_vid_ids)
+#     nextPageToken = None
+#     while True:
+#         request = youtube.playlistItems().list(
+#                 part='contentDetails',
+#                 playlistId='PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5',
+#                 maxResults=50,
+#                 pageToken=nextPageToken
+#
+#             )
+#         response = request.execute()
+#
+#         for items in response['items']:
+#             edit_vid_ids.append(items['contentDetails']['videoId'])
+#
+#         nextPageToken = response.get('nextPageToken')
+#
+#         if not nextPageToken:
+#             break
 
 # playlistUpdate()
-# print(len(vid_ids))
+# print(len(clips_vid_ids))
+# print(len(edit_vid_ids))

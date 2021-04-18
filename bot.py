@@ -18,8 +18,7 @@ client = commands.Bot(command_prefix = '$')
 # os.chdir(os.path.dirname(sys.argv[0]))
 @client.event
 async def on_ready():
-    yt_api.editplaylistUpdate()
-    yt_api.clipsplaylistUpdate()
+    yt_api.playlistUpdate()
     print('Bot is ready with ' + str(len(yt_api.edit_vid_ids)) + ' edit museum videos and ' + str(len(yt_api.clips_vid_ids)) + ' clips in desc videos discovered.')
     custom = discord.Game('Editing Archive')
     await client.change_presence(status=discord.Status.online, activity=custom)
@@ -50,8 +49,7 @@ async def servers(ctx):
 @client.command()
 @commands.cooldown(1, 43200)
 async def refresh(ctx):
-    yt_api.editplaylistUpdate()
-    yt_api.clipsplaylistUpdate()
+    yt_api.playlistUpdate()
     await ctx.send(f'Refreshed video playlists, {str(len(yt_api.edit_vid_ids))} edit museum videos and {str(len(yt_api.clips_vid_ids))} clips in desc videos discovered.')
 
 
