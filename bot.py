@@ -1,5 +1,6 @@
 import botkeys
 import yt_api
+import private_check
 import random
 import os
 import discord
@@ -30,15 +31,14 @@ async def edit(ctx, *, source=None):
         await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5')
     else:
         vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.edit_vid_ids))
-        await ctx.send(vid_link)
+        await ctx.send(private_check.editchoose())
 
 @client.command()
 async def clips(ctx, *, source=None):
     if source == 'source':
         await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z')
     else:
-        vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.clips_vid_ids))
-        await ctx.send(vid_link)
+        await ctx.send(private_check.clipschoose())
 
 @client.command()
 async def servers(ctx):
