@@ -49,8 +49,12 @@ async def servers(ctx):
 @client.command()
 @commands.cooldown(1, 43200)
 async def refresh(ctx):
-    yt_api.playlistUpdate()
-    await ctx.send(f'Refreshed video playlists, {str(len(yt_api.edit_vid_ids))} edit museum videos and {str(len(yt_api.clips_vid_ids))} clips in desc videos discovered.')
+    print('Updating lists...')
+    await ctx.send('Recieved request, updating lists...')
+    async with ctx.channel.typing():
+        yt_api.playlistUpdate()
+        await ctx.send(f'Refreshed video playlists, {str(len(yt_api.edit_vid_ids))} edit museum videos and {str(len(yt_api.clips_vid_ids))} clips in desc videos discovered.')
+    print('Done.')
 
 
 client.run(botkeys.discord_key)
