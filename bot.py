@@ -53,7 +53,7 @@ async def refresh(ctx):
     await ctx.send('Recieved request, updating lists...')
     async with ctx.channel.typing():
         yt_api.playlistUpdate()
-        await ctx.send(f'Refreshed video playlists, {str(len(yt_api.edit_vid_ids))} edit museum videos and {str(len(yt_api.clips_vid_ids))} clips in desc videos discovered.')
+    await ctx.send(f'Refreshed video playlists, {str(len(yt_api.edit_vid_ids))} edit museum videos and {str(len(yt_api.clips_vid_ids))} clips in desc videos discovered.')
     print('Done.')
 
 
