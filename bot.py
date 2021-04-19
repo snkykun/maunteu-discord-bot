@@ -27,24 +27,27 @@ async def on_ready():
 ## commands
 @client.command()
 async def edit(ctx, *, source=None):
-    if source == 'source':
-        await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5')
-    else:
-        vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.edit_vid_ids))
-        await ctx.send(private_check.editchoose())
+    async with ctx.channel.typing():
+        if source == 'source':
+            await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PL-qDtdxHx3uLL7QVV3hXh08tKJU5PHy-5')
+        else:
+            vid_link = 'https://www.youtube.com/watch?v=' + str(random.choice(yt_api.edit_vid_ids))
+            await ctx.send(private_check.editchoose())
 
 @client.command()
 async def clips(ctx, *, source=None):
-    if source == 'source':
-        await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z')
-    else:
-        await ctx.send(private_check.clipschoose())
+    async with ctx.channel.typing():
+        if source == 'source':
+            await ctx.send('Videos are sourced from this playlist here: https://www.youtube.com/playlist?list=PLrT1rCQzYiy6GgXecOT90ICkSeRDTTx8z')
+        else:
+            await ctx.send(private_check.clipschoose())
 
 @client.command()
 async def servers(ctx):
-    servers = list(client.guilds)
-    await ctx.send(f"Connected on {str(len(servers))} servers:")
-    await ctx.send('\n'.join(guild.name for guild in servers))
+    async with ctx.channel.typing():
+        servers = list(client.guilds)
+        await ctx.send(f"Connected on {str(len(servers))} servers:")
+        await ctx.send('\n'.join(guild.name for guild in servers))
 
 @client.command()
 @commands.cooldown(1, 43200)
