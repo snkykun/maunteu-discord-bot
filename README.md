@@ -1,4 +1,4 @@
-# maunteu-discord-bot [![Discord](https://img.shields.io/discord/743941628020129853.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/XM93ZdB)
+# maunteu-discord-bot [![Discord](https://img.shields.io/discord/743941628020129853.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/EXuG82n)
 
 A small discord bot that uses the [YoutubeAPI](https://developers.google.com/youtube/v3/quickstart/python) to return video game edits at random
 
