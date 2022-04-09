@@ -77,19 +77,21 @@ def kyyViewCount():
         kyy_response = kyy_request.execute()
         kyy_nextPageToken = kyy_response.get('nextPageToken')
         for items in kyy_response['items']:
-
-            kyy_request = youtube.videos().list(
-                part='statistics',
-                id=items['contentDetails']['videoId']
-            )
-            kyy_response = kyy_request.execute()
-            kyy_viewCounts = kyy_viewCounts + int(kyy_response['items'][0]['statistics']['viewCount'])
-
+            try:
+                kyy_request = youtube.videos().list(
+                    part='statistics',
+                    id=items['contentDetails']['videoId']
+                )
+                kyy_response = kyy_request.execute()
+                kyy_viewCounts = kyy_viewCounts + int(kyy_response['items'][0]['statistics']['viewCount'])
+            except:
+                print('failed to process https://www.youtube.com/watch?v=' + str(items['contentDetails']['videoId']) + ' its probably private')
 
         if not kyy_nextPageToken:
             break
-    return kyy_viewCounts
+    return format(kyy_viewCounts, ",d")
 
+print(kyyViewCount())
 
 # def editplaylistUpdate():
 #     if len(edit_vid_ids) > 0:
