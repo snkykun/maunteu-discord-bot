@@ -89,8 +89,7 @@ def kyyViewCount():
             break
     return format(kyy_viewCounts, ",d")
 
-print(kyyViewCount())
-
+    
 # def editplaylistUpdate():
 #     if len(edit_vid_ids) > 0:
 #         list.clear(edit_vid_ids)
