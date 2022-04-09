@@ -87,11 +87,11 @@ def kyyViewCount():
             # stats = item_response['items']['statistics']
             # print(stats['viewCount'])
             kyy_viewCounts = kyy_viewCounts + int(kyy_response['items'][0]['statistics']['viewCount'])
-        return kyy_viewCounts
 
 
         if not kyy_nextPageToken:
             break
+    return kyy_viewCounts
 
 # kyyViewCount()
 # print(kyy_id_list)
