@@ -57,8 +57,6 @@ def playlistUpdate():
         if not edit_nextPageToken:
             break
 
-kyy_id_list = []
-
 def kyyViewCount():
 
     kyy_viewCounts = 0
