@@ -57,6 +57,46 @@ def playlistUpdate():
         if not edit_nextPageToken:
             break
 
+kyy_id_list = []
+kyy_viewCounts = 0
+def kyyViewCount():
+
+    kyy_nextPageToken = None
+
+    while True:
+
+        # kyy_viewCounts
+        kyy_request = youtube.playlistItems().list(
+                part='contentDetails',
+                playlistId='PL5XH1T5EYkawLWSWS4H0WzBE6pn6M1QTY',
+                maxResults=50,
+                pageToken=kyy_nextPageToken
+
+            )
+        kyy_response = kyy_request.execute()
+        kyy_nextPageToken = kyy_response.get('nextPageToken')
+        global kyy_viewCounts
+        for items in kyy_response['items']:
+
+            kyy_request = youtube.videos().list(
+                part='statistics',
+                id=items['contentDetails']['videoId']
+            )
+            kyy_response = kyy_request.execute()
+            # item_response = kyy_request.execute()
+            # stats = item_response['items']['statistics']
+            # print(stats['viewCount'])
+            kyy_viewCounts = kyy_viewCounts + int(kyy_response['items'][0]['statistics']['viewCount'])
+        return kyy_viewCounts
+
+
+        if not kyy_nextPageToken:
+            break
+
+# kyyViewCount()
+# print(kyy_id_list)
+# print(kyy_viewCounts)
+
 # def editplaylistUpdate():
 #     if len(edit_vid_ids) > 0:
 #         list.clear(edit_vid_ids)
@@ -78,7 +118,4 @@ def playlistUpdate():
 #
 #         if not nextPageToken:
 #             break
-
-# playlistUpdate()
-# print(len(clips_vid_ids))
 # print(len(edit_vid_ids))
