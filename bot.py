@@ -48,7 +48,7 @@ async def servers(ctx):
         await ctx.send('\n'.join(guild.name for guild in servers))
 @client.command()
 async def kyyViews():
-    await ctx.send(yt_api_key.kyyViewCount())
+    await ctx.send(str(yt_api_key.kyyViewCount()))
 
 @client.command()
 @commands.cooldown(1, 43200)
