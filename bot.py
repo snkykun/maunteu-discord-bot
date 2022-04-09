@@ -48,7 +48,7 @@ async def servers(ctx):
         await ctx.send('\n'.join(guild.name for guild in servers))
 @client.command()
 async def kv(ctx):
-    await ctx.channel.send(str(yt_api.kyyViewCount()))
+    await ctx.channel.send('Kyy has accumulated ' + str(format(yt_api.kyyViewCount(), ",d")) + ' views through his editing commissions!')
 
 @client.command()
 @commands.cooldown(1, 43200)

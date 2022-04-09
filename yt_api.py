@@ -83,9 +83,6 @@ def kyyViewCount():
                 id=items['contentDetails']['videoId']
             )
             kyy_response = kyy_request.execute()
-            # item_response = kyy_request.execute()
-            # stats = item_response['items']['statistics']
-            # print(stats['viewCount'])
             kyy_viewCounts = kyy_viewCounts + int(kyy_response['items'][0]['statistics']['viewCount'])
 
 
