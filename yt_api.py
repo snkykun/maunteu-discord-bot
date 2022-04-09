@@ -58,9 +58,10 @@ def playlistUpdate():
             break
 
 kyy_id_list = []
-kyy_viewCounts = 0
+
 def kyyViewCount():
 
+    kyy_viewCounts = 0
     kyy_nextPageToken = None
 
     while True:
@@ -75,7 +76,6 @@ def kyyViewCount():
             )
         kyy_response = kyy_request.execute()
         kyy_nextPageToken = kyy_response.get('nextPageToken')
-        global kyy_viewCounts
         for items in kyy_response['items']:
 
             kyy_request = youtube.videos().list(
@@ -90,9 +90,6 @@ def kyyViewCount():
             break
     return kyy_viewCounts
 
-# kyyViewCount()
-# print(kyy_id_list)
-# print(kyy_viewCounts)
 
 # def editplaylistUpdate():
 #     if len(edit_vid_ids) > 0:
