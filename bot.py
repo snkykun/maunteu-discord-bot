@@ -47,7 +47,7 @@ async def servers(ctx):
         await ctx.send(f"Connected on {str(len(servers))} servers:")
         await ctx.send('\n'.join(guild.name for guild in servers))
 @client.command()
-async def kyyViews(ctx):
+async def kv(ctx):
     await ctx.send(str(yt_api_key.kyyViewCount()))
 
 @client.command()
