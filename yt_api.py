@@ -58,11 +58,10 @@ def playlistUpdate():
             break
 
 kyy_id_list = []
-
+kyy_viewCounts = 0
 def kyyViewCount():
 
     kyy_nextPageToken = None
-    kyy_viewCounts = 0
 
     while True:
 
